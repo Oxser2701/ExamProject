@@ -1,6 +1,20 @@
+import random
+
 import selenium.webdriver.support.expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+
+from constant.text_base import TEXTS
+
+
+def generate_text(word_count=5, lang="eng"):
+    """Generate random text based sample text"""
+    text = TEXTS[lang].replace("\n", "").split(" ")
+    generated_text_lst = []
+    for _ in range(word_count):
+        generated_text_lst.append(random.choice(text))
+    generated_text = ' '.join(generated_text_lst)
+    return generated_text
 
 
 class BaseHelpers:

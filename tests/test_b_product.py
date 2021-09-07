@@ -3,6 +3,7 @@ import pytest
 from conftest import BaseTest
 from constant.cart_page import CartPageConstant
 from constant.product_page import ProductPageConstant
+from helpers.base import generate_text
 from pages.cart_page import CartPage
 from pages.product_page import ProductPage
 
@@ -31,7 +32,7 @@ class TestComment(BaseTest):
         create_comment.open_product()
         create_comment.open_review()
         title = "Test Title. Welcome to my review"
-        text = "Test text. Text about reviewing of some product" * 10
+        text = generate_text(100)
         create_comment.fill_title_text(title=title, text=text)
         create_comment.verify_message(ProductPageConstant.REVIEW_MESSAGE_TEXT)
         self.log.info("Comment was successfully added")
